@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Number Guessing Game</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        font-size: 36px;
+        margin-top: 50px;
+      }
+      p {
+        font-size: 24px;
+        margin-top: 20px;
+      }
+      input[type="number"] {
+        font-size: 24px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      input[type="submit"] {
+        font-size: 24px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Number Guessing Game</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <form>
+      <input type="number" min="1" max="100" required>
+      <input type="submit" value="Guess">
+    </form>
+    <script>
+      const secretNumber = Math.floor(Math.random() * 100) + 1;
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const guess = parseInt(event.target.querySelector('input[type="number"]').value);
+        if (guess === secretNumber) {
+          alert('Congratulations, you guessed the number!');
+        } else if (guess < secretNumber) {
+          alert('The secret number is higher.');
+        } else {
+          alert('The secret number is lower.');
+        }
+      });
+    </script>
+  </body>
+</html>
